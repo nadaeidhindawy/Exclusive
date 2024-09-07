@@ -1,0 +1,58 @@
+<section class="p-5 m-5">
+
+  <span class="fs-2 text-main d-flex justify-content-end" routerLink="/home"><i
+      class="fa-solid fa-left-long"></i></span>
+
+
+  <h2 class="fw-bold text-main">Our Products</h2>
+  <p class="h4 fw-bold "> {{date |date:'medium' }}</p>
+
+
+  <i class="fa-solid fa-magnifying-glass text-muted"></i>
+  <input [(ngModel)]="text" class="form-control mr-sm-2 w-50 d-inline my-3" type="search" placeholder="search by name ">
+  <div class="row g-3">
+
+    @for (product of productsList |search:text ; track product.id) {
+    <div class="col-md-3  ">
+      <div class="product p-2">
+
+        <div>
+          <div class="position-absolute fs-4 ">
+            @if (!wishListData.includes(product.id)) {
+            <span (click)="AddWishList(product.id)"> <i class="fa-regular fa-heart"></i></span>
+            }
+            @if (wishListData.includes(product.id)) {
+            <span (click)="removeFromWishList(product.id)"><i class="fa-solid fa-heart text-danger"></i></span>
+            }
+          </div>
+          <div [routerLink]="['/details' , product.id]">
+            <img [src]="product.imageCover" class="w-75 m-auto d-grid " [alt]="product.title">
+          </div>
+
+          <h3 class="small fw-bold text-main pt-2 ">{{product.category.name | sale}}</h3>
+          <h4 class="h6">{{product.title | termtext :2}}</h4>
+
+          <div>
+            <span class="text-main fw-bold">{{product.price | currency}}</span>
+          </div>
+          <div>
+            @for (num of [1,2,3,4,5].slice(0,product.ratingsAverage); track $index) {
+            <span>
+              <i class="fas fa fa-star rating-color"></i>
+            </span>
+            }
+            @if (product.ratingsAverage % 1 !==0) {
+            <i class="fa-solid fa-star-half rating-color"></i>
+            }
+            <span class="text-muted px-1">{{product.ratingsAverage}}</span>
+
+          </div>
+        </div>
+        <button class="btn-main2 mt-2 w-100 " (click)="addCart(product.id)">Add to Cart</button>
+      </div>
+    </div>
+    }
+  </div>
+
+
+</section>

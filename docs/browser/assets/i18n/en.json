@@ -1,0 +1,9 @@
+{
+  "navbar": {
+    "home": "Home",
+    "categories": "Categories",
+    "brands": "Brands",
+    "signOut": "SignOut",
+    "lang": "English"
+  }
+}

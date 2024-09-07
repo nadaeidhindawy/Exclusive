@@ -1,0 +1,24 @@
+<section class="order  my-5 w-100">
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md-6 d-grid m-auto ">
+        <h1 class=" fw-bold text-center mt-5">Shipping Address</h1>
+        <form [formGroup]="orders" (ngSubmit)="ordersSubmit()" class=" p-4 rounded-4 shadow my-5">
+          <div class="m-1">
+            <input formControlName="details" type="text" placeholder="Details" class="form-control">
+          </div>
+          <div class="m-1">
+            <input formControlName="phone" type="tel" placeholder="Phone " class=" form-control">
+          </div>
+          <div class="m-1">
+            <input formControlName="city" type="text" placeholder="city" class=" form-control">
+          </div>
+          <button class=" btn-den mt-3" type="submit">Check out</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>

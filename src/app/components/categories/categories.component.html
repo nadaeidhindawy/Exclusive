@@ -1,0 +1,21 @@
+<section class="m-5 container">
+  <h2 class="text-main fw-bold ">Categories</h2>
+
+  <div class="row">
+
+    @for (Cat of CategoriesList; track Cat._id) {
+
+
+    <div class="col-md-3">
+      <img [src]="Cat.image" [routerLink]="['/detailsCat',Cat._id]" height="250" class="w-75" [alt]="Cat.name">
+      <h3 class="h6 text-main fw-bold text-center">{{Cat.name}}</h3>
+    </div>
+
+
+
+    }
+  </div>
+
+
+
+</section>

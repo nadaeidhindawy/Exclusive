@@ -1,0 +1,18 @@
+<section class="container brand">
+  <div class="row">
+
+    @for (brand of brandList; track brand._id) {
+
+
+    <div class="col-md-3" [routerLink]="['/detailsBrand' , brand._id]">
+      <img [src]="brand.image" height="250" class="w-100" [alt]="brand.name">
+      <h3 class="h6 text-main fw-bold text-center">{{brand.name}}</h3>
+    </div>
+
+
+
+    }
+  </div>
+
+
+</section>

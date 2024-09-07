@@ -1,0 +1,131 @@
+<section class=" register ">
+
+
+  <div class="d-flex justify-content-center p-5">
+
+    <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" class="shadow-lg p-5 m-5 rounded-4  ">
+
+
+      <h1 class=" h2 text-dark fw-bold text-center  ">register Now:</h1>
+
+      <input [ngClass]="
+      {'is-valid':!registerForm.get('name')?.errors && (registerForm.get('name')?.touched ||registerForm.get('name')?.dirty),
+      'is-invalid':registerForm.get('name')?.errors  && (registerForm.get('name')?.touched ||registerForm.get('name')?.dirty)
+      }" formControlName="name" type="text" class="form-control my-3 " placeholder=" Your name.">
+
+      @if (registerForm.get('name')?.errors && (registerForm.get('name')?.touched ||registerForm.get('name')?.dirty) )
+      {
+      <div class="alert alert-danger  w-50">
+        @if (registerForm.get('name')?.getError('required')) {
+        <p class="m-0">Name is Required</p>
+
+        }@else if (registerForm.get('name')?.getError('minlength')) {
+
+        <p class="m-0">Name Should be more than or equal 3 chars</p>
+
+        }@else if (registerForm.get('name')?.getError('maxlength')) {
+
+        <p class="m-0">Name Should be less than or equal 20 chars</p>
+
+        }
+      </div>
+      }
+
+      <input
+        [ngClass]="
+    {'is-valid':!registerForm.get('email')?.errors && (registerForm.get('email')?.touched ||registerForm.get('email')?.dirty),
+    'is-invalid':registerForm.get('email')?.errors  && (registerForm.get('email')?.touched ||registerForm.get('email')?.dirty)}"
+        formControlName="email" type="email" class="form-control my-3" placeholder="Your email.">
+
+      @if (registerForm.get('email')?.errors && registerForm.get('email')?.touched)
+      {
+      <div class="alert alert-danger  w-50">
+        @if (registerForm.get('email')?.getError('required')) {
+
+        <p class="m-0">Email Is Required</p>
+
+        } @else if (registerForm.get('email')?.getError('email')) {
+        <p class="m-0">Enter Valid Email</p>
+        }
+      </div>
+      }
+
+      <input
+        [ngClass]="
+    {'is-valid':!registerForm.get('Phone')?.errors && (registerForm.get('Phone')?.touched ||registerForm.get('Phone')?.dirty),
+    'is-invalid':registerForm.get('Phone')?.errors  && (registerForm.get('Phone')?.touched ||registerForm.get('Phone')?.dirty)}"
+        formControlName="Phone" type="tel" class="form-control my-3" placeholder="Your phone.">
+
+      @if (registerForm.get('Phone')?.errors && registerForm.get('Phone')?.touched)
+      {
+      <div class="alert alert-danger  w-50">
+        @if (registerForm.get('Phone')?.getError('required')) {
+
+        <p class="m-0">Phone Is Required</p>
+
+        } @else if (registerForm.get('Phone')?.getError('pattern')) {
+        <p class="m-0">Enter Valid Phone</p>
+        }
+      </div>
+      }
+
+
+
+      <input
+        [ngClass]="
+    {'is-valid':!registerForm.get('password')?.errors && (registerForm.get('password')?.touched ||registerForm.get('password')?.dirty),
+    'is-invalid':registerForm.get('password')?.errors  && (registerForm.get('password')?.touched ||registerForm.get('password')?.dirty)}"
+        formControlName="password" type="password" class="form-control my-3" placeholder="Your password.">
+
+      @if (registerForm.get('password')?.errors && registerForm.get('password')?.touched)
+      {
+      <div class="alert alert-danger  w-50">
+        @if (registerForm.get('password')?.getError('required')) {
+
+        <p class="m-0">password Is Required</p>
+
+        } @else if (registerForm.get('password')?.getError('pattern')) {
+        <p class="m-0">Enter Valid password</p>
+        }
+      </div>
+      }
+
+
+      <input formControlName="rePassword" type="password" class="form-control my-3" placeholder="Your rePassword.">
+      @if (registerForm.getError('mismatch') && registerForm.get('rePassword')?.touched ) {
+
+      <p class="alert alert-danger w-50 m-0">Password confirmation is incorrect</p>
+      }
+
+
+
+
+      <div class=" d-flex justify-content-between">
+        <button [disabled]="registerForm.invalid|| isLoading" type="submit" class="btn btn-main">register
+          @if (isLoading)
+          {
+          <span><i class="fas fa-spin fa-spinner"></i></span>
+          }
+        </button>
+
+        <div>
+          <a class="px-3">Already have account?</a>
+          <a routerLink="/login" class="link-primary">login</a>
+        </div>
+      </div>
+
+      @if (msgError)
+      {
+      <p class="alert alert-danger w-50 m-0">{{msgError}}</p>
+      }
+
+      @if (msgSuccess) {
+
+      <p class="h3  m-auto fw-bold text-success">Success</p>
+
+      }
+    </form>
+
+  </div>
+
+</section>

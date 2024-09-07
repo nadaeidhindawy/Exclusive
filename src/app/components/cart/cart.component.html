@@ -1,0 +1,44 @@
+<section class="bg-main-light rounded-4 shadow p-4  m-5">
+
+  <div class="d-flex align-items-center justify-content-between">
+
+    <h1 class="h2 fw-bold">Shop Cart</h1>
+    <button (click)="clearItem()" class="btn  fs-3 text-danger"> <i class="fa-solid fa-delete-left"></i>
+    </button>
+  </div>
+  <p class="text-main ">total cart price {{cartDetails.totalCartPrice |currency }}</p>
+  @for (item of cartDetails.products; track item.product.id) {
+  <div class="row mb-2 border-bottom">
+    <!-- img -->
+    <div class="col-md-1">
+      <div>
+        <img [src]="item.product.imageCover" class="w-100" [alt]="item.product.title">
+      </div>
+    </div>
+    <!-- info -->
+    <div class="col-md-11 d-flex align-items-center justify-content-between">
+      <div>
+        <h3 class="h5">{{item.product.title}}</h3>
+        <p class="text-secondary fw-bold">price: {{item.price | currency}}</p>
+        <button (click)="removeItem(item.product.id)" class="text-danger btn p-0 cr"> <i
+            class="fa-regular fa-trash-can"></i> Remove</button>
+      </div>
+      <div class="d-flex align-items-center gap-1">
+        <span (click)="updateCount(item.product.id ,item.count -1)" class="border cr"><i
+            class="fa-solid fa-minus"></i></span>
+        <span class="border cr shadow m-2">{{item.count}}</span>
+        <span (click)="updateCount(item.product.id ,item.count +1)" class="border cr bg-main px-1"><i
+            class="fa-solid fa-plus"></i></span>
+      </div>
+
+    </div>
+  </div>
+  }
+
+  <p (click)="shopping()" class="text-center text-main cr fs-3">Shopping Now <i class="fa-solid fa-cart-shopping"></i>
+  </p>
+
+  <button [routerLink]="['/order' ,cartDetails._id]" class="btn-main ms-auto d-block">place order</button>
+
+
+</section>

@@ -1,0 +1,21 @@
+.order{
+  background-image: url(../../../assets/image/high.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+   height: 100vh;
+}
+
+.btn-den{
+  background-color:rgb(32, 185, 185);
+  padding: 7px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+.btn-den:hover {
+  background-color:rgb(27, 129, 129);
+  color: #fff;
+}

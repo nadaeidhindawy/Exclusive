@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+  <div class="container">
+    <a class="navbar-brand  fw-bold fs-4" routerLink="home">
+      Exclusive
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link fw-bold" routerLink="home" routerLinkActive="active-link">{{"navbar.home" |
+            translate}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold" routerLink="categories" routerLinkActive="active-link">{{"navbar.categories" |
+            translate}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold" routerLink="brand" routerLinkActive="active-link">{{"navbar.brands" |
+            translate}}</a>
+        </li>
+
+      </ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{"navbar.lang" | translate}}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a [class.bg-info]="_TranslateService.currentLang === 'en' " (click)="change('en')"
+                class="dropdown-item cr">English</a></li>
+            <li><a [class.bg-info]="_TranslateService.currentLang === 'ar' " (click)="change('ar')"
+                class="dropdown-item cr">عربي</a></li>
+          </ul>
+        <li class="nav-item">
+          <a class="nav-link active cr" aria-current="page" routerLink="login">
+            {{"navbar.signOut" |
+            translate}}</a>
+
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active fw-bold position-relative  " aria-current="page" routerLink="wish">
+            <i class="fa-regular fa-heart fa-xl"></i>
+            <span class="badge bg-danger"></span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active fw-bold position-relative" aria-current="page" routerLinkActive="color3"
+            routerLink="cart"><i class="fa-solid fa-cart-shopping fa-2xl"></i>
+            <span class="badge bg-danger position-absolute top-0 start-0">{{countNumber()}}</span>
+          </a>
+
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>

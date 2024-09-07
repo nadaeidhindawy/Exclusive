@@ -1,0 +1,16 @@
+.form-control {
+  border: 0;
+}
+
+.form-control:active,
+.form-control:focus,
+.form-control:focus:active {
+  background-color: #b6b8b85f !important;
+  border-color: #b2b4b455;
+  color: rgb(128, 60, 0);
+}
+
+.form-control:valid {
+  background-color:
+    #F5F5F5 !important;
+}

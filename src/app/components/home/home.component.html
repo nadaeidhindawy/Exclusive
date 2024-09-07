@@ -1,0 +1,140 @@
+<section class="m-5">
+  <div class="row">
+    <div class="col-lg-9 col-md-12">
+      <div class="  ">
+
+        <owl-carousel-o [options]="customOptionsMain">
+          <ng-template carouselSlide> <img src="./assets/image/play.png" class="imge1" height="300px" width="100%"
+              alt="">
+          </ng-template>
+          <ng-template carouselSlide> <img src="./assets/image/slider-image-1.jpeg" class="imge1" height="300px"
+              width="100%" alt="">
+          </ng-template>
+          <ng-template carouselSlide> <img src="./assets/image/slider-2.jpeg" class="imge1" height="300px" width="100%"
+              alt="">
+          </ng-template>
+          <ng-template carouselSlide> <img src="./assets/image/slider-image-3.jpeg" class="imge1" height="300px"
+              width="100%" alt="">
+          </ng-template>
+          <ng-template carouselSlide> <img src="./assets/image/WhatsApp Image 2024-08-22 at 13.29.51 (2).jpeg"
+              class="imge1" height="300px" width="100%" alt="">
+          </ng-template>
+          <ng-template carouselSlide> <img src="./assets/image/WhatsApp Image 2024-08-22 at 13.29.51.jpeg" class="imge1"
+              height="300px" width="100%" alt="">
+          </ng-template>
+          <ng-template carouselSlide>
+            <div class="row bg-black text-light">
+              <div class="col-4 m-auto d-grid ">
+                <h2 class="fw-bold p-3 ">Enhance Your Music Experience</h2>
+              </div>
+              <div class="col-8">
+                <img src="./assets/image/speak.png" class="imge1" height="300px" width="100%" alt="">
+              </div>
+            </div>
+
+
+          </ng-template>
+          <ng-template carouselSlide> <img src="./assets/image/slider-image-2.jpeg" class="imge1" height="300px"
+              width="100%" alt="">
+          </ng-template>
+          <ng-template carouselSlide> <img src="./assets/image/WhatsApp Image 2024-08-22 at 13.29.51 (1).jpeg"
+              class="imge1" height="300px" width="100%" alt="">
+          </ng-template>
+        </owl-carousel-o>
+
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-12">
+      <img src="./assets/image/perfume.png" class=" w-75" height="150px" alt="">
+      <img src="./assets/image/speaker.png" class=" w-50" height="150px" alt="">
+    </div>
+  </div>
+</section>
+
+
+
+
+<!--Categories -->
+<section class="m-5 ">
+  <h2 class="text-main fw-bold p-2 ">{{"navbar.categories" |
+    translate}}</h2>
+  <button routerLink="/categories" class="btn-main  ms-auto d-block mb-2">View All</button>
+
+  <owl-carousel-o [options]="customOptionsCa">
+
+
+    @for (Cat of CategoriesList; track Cat._id) {
+    <ng-template carouselSlide>
+      <div>
+        <img [src]="Cat.image" height="250px" class="w-100" [alt]="Cat.name">
+        <h3 class="h6 text-main text-center">{{Cat.name}}</h3>
+      </div>
+    </ng-template>
+
+
+    }
+
+  </owl-carousel-o>
+
+
+</section>
+
+
+
+<!-- product -->
+<section class="m-5">
+
+
+
+  <h2 class="fw-bold text-main">Flash Sales</h2>
+
+  <input [(ngModel)]="text" class="form-control mr-sm-2 w-50 d-inline my-3" type="search" placeholder="search by name ">
+
+
+  <div class="row g-3">
+    @for (product of productsList.slice(0,12) |search: text ; track product.id) {
+    <div class="col-md-3  ">
+      <div class="product p-2">
+        <div>
+          <div class="position-absolute fs-4 ">
+            @if (!wishListData.includes(product.id)) {
+            <span (click)="addWishList(product.id)"> <i class="fa-regular fa-heart"></i></span>
+            }
+            @if (wishListData.includes(product.id)) {
+            <span (click)="removeFromWishList(product.id)"><i class="fa-solid fa-heart text-danger"></i></span>
+            }
+          </div>
+          <div [routerLink]="['/details' , product.id]">
+            <img [src]="product.imageCover" class="w-75 m-auto d-grid position-relative " [alt]="product.title">
+          </div>
+
+
+
+          <h3 class="small fw-bold text-main pt-2 ">{{product.category.name | sale}}</h3>
+          <h4 class="h6">{{product.title | termtext :2}}</h4>
+
+          <div>
+            <span class="text-main fw-bold">{{product.price | currency}}</span>
+          </div>
+          <div>
+            @for (num of [1,2,3,4,5].slice(0,product.ratingsAverage); track $index) {
+            <span>
+              <i class="fas fa fa-star rating-color"></i>
+            </span>
+            }
+            @if (product.ratingsAverage % 1 !==0) {
+            <i class="fa-solid fa-star-half rating-color"></i>
+            }
+            <span class="text-muted px-1">{{product.ratingsAverage}}</span>
+
+          </div>
+        </div>
+        <button class="btn-main2 mt-2 w-100 " (click)="addCart(product.id)">Add to Cart</button>
+      </div>
+    </div>
+    }
+  </div>
+  <button routerLink="/product" class="btn-main  m-auto d-block my-5">View All</button>
+
+
+</section>
