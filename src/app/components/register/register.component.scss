@@ -1,10 +1,4 @@
-// .register{
-//   background-image: url(../../../assets/image/purple-shade-smoke-starry-night-stars.jpg );
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   height: auto;
-// }
+
 
 .form-control {
   border: 0;
@@ -23,3 +17,8 @@
     #F5F5F5 !important;
 }
 
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}

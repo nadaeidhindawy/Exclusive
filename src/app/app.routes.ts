@@ -35,8 +35,6 @@ export const routes: Routes = [
       { path: 'brand', loadComponent: () => import('./components/brands/brands.component').then((c) => c.BrandsComponent) },
       { path: 'detailsBrand/:id', loadComponent: () => import('./components/details-brand/details-brand.component').then((c) => c.DetailsBrandComponent) },
       { path: 'wish', loadComponent: () => import('./components/wish/wish.component').then((c) => c.WishComponent) },
-
-
     ]
   },
   { path: '**', component: NotfoundComponent }

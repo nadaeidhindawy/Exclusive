@@ -20,12 +20,10 @@ export class NavBlankComponent implements OnInit {
 
 
 
-
   countNumber: Signal<number> = computed(() => this._CartService.cartNumber())
 
 
   ngOnInit(): void {
-
     this._CartService.getProductToCart().subscribe({
       next: (res) => {
         this._CartService.cartNumber.set(res.numOfCartItems)

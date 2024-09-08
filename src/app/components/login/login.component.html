@@ -1,10 +1,10 @@
 <section class=" p-5 ">
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12 col-lg-6 ">
       <img src="./assets/image/Side Image.png" class="w-100" alt="">
     </div>
-    <div class="col-md-6">
+    <div class="col-md-12 col-lg-6">
       <form class=" w-75 m-auto my-5 " [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
         <h3 class=" h3 fw-bold">Log in to Exclusive</h3>
         <h4 class="h6">Enter your details below</h4>
@@ -54,15 +54,15 @@
 
 
 
-        <div>
-          <button [disabled]="loginForm.invalid|| isLoading" type="submit" class="btn btn-main mt-3  px-5">login
+        <div class="d-flex justify-content-between">
+          <button [disabled]="loginForm.invalid|| isLoading" type="submit" class="btn btn-main    px-5">login
             @if (isLoading)
             {
             <span><i class="fas fa-spin fa-spinner"></i></span>
             }
           </button>
 
-          <a routerLink="/forget" class="text-main px-5 fw-bold ">Forget Password?</a>
+          <div class="mx-4"> <a class="text-main fw-bold  " routerLink="/forget">Forget Password?</a></div>
         </div>
 
 

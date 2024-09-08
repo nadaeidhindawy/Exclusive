@@ -1,12 +1,11 @@
-<section class=" register ">
+<section>
 
 
-  <div class="d-flex justify-content-center p-5">
+  <div class=" d-flex justify-content-center  align-items-center  ">
+    <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" class="shadow-lg p-5 m-5 rounded-4  w-75  ">
 
-    <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" class="shadow-lg p-5 m-5 rounded-4  ">
 
-
-      <h1 class=" h2 text-dark fw-bold text-center  ">register Now:</h1>
+      <h1 class=" h2 text-dark fw-bold text-center">register Now:</h1>
 
       <input [ngClass]="
       {'is-valid':!registerForm.get('name')?.errors && (registerForm.get('name')?.touched ||registerForm.get('name')?.dirty),
@@ -99,20 +98,21 @@
 
 
 
-
-      <div class=" d-flex justify-content-between">
-        <button [disabled]="registerForm.invalid|| isLoading" type="submit" class="btn btn-main">register
-          @if (isLoading)
-          {
-          <span><i class="fas fa-spin fa-spinner"></i></span>
-          }
-        </button>
-
-        <div>
-          <a class="px-3">Already have account?</a>
-          <a routerLink="/login" class="link-primary">login</a>
+      <div class="row align-items-center justify-content-between">
+        <div class=" col-md-6 col-sm-12 my-2">
+          <button [disabled]="registerForm.invalid|| isLoading" type="submit" class="btn btn-main">register
+            @if (isLoading)
+            {
+            <span><i class="fas fa-spin fa-spinner"></i></span>
+            }
+          </button>
+        </div>
+        <div class=" col-md-6 col-sm-12">
+          <p class="d-inline px-1">Already have account?</p>
+          <a routerLink="/login" class="link-primary ">login</a>
         </div>
       </div>
+
 
       @if (msgError)
       {
@@ -125,7 +125,6 @@
 
       }
     </form>
-
   </div>
 
 </section>
